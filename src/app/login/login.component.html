@@ -1,0 +1,14 @@
+<div class="content-container">
+  <div class="content-area">
+    <div class="login-wrapper">
+      <form class="login" (ngSubmit)="login()">
+        <label class="title">Zaloguj się do społeczności</label>
+        <div class="login-group">
+          <input class="username" name="username" [(ngModel)]="username" type="text" id="login_username" placeholder="Nazwa użytkownika">
+          <input class="password" name="password" [(ngModel)]="password" type="password" id="login_password" placeholder="Hasło">
+          <button type="submit" class="btn btn-primary">ZALOGUJ SIĘ</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
