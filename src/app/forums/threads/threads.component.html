@@ -7,7 +7,7 @@
         <th>Ostatni post</th>
         <th>Posty</th>
       </tr>
-      <tr *ngFor="let thread of threads">
+      <tr *ngFor="let thread of threads" [routerLink]="[thread.alias]">
         <td>{{thread.title}}</td>
         <td>{{thread.posts[0].username}}</td>
         <td>{{thread.posts[0].timestamp | date:'medium'}}</td>

@@ -2,6 +2,8 @@ import { Component, ElementRef, ViewChild, OnInit, AfterViewChecked } from '@ang
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ChatBotService } from '../services/chat-bot.service';
 import { UserService } from '../services/user.service';
+import '@cds/core/icon/register.js';
+import { ClarityIcons, windowCloseIcon} from '@cds/core/icon';
 
 @Component({
   selector: 'app-chat',
@@ -17,15 +19,27 @@ export class ChatComponent implements OnInit, AfterViewChecked {
 
   constructor(
     private chatBotService: ChatBotService,
-    private userService: UserService) { }
+    private userService: UserService,
+    private route: ActivatedRoute,
+    private router: Router) {
+    ClarityIcons.addIcons(windowCloseIcon);
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.route.params.subscribe((params: Params) =>{
+      this.messages = [];
+      this.user = this.userService.getUser();
+      this.guest = params['username'];
+    })
+  }
 
   ngAfterViewChecked() {
     this.scrollToBottom();
   }
 
-  close() {}
+  close() {
+    this.router.navigate([{outlets: {chat: null}}]);
+  }
 
   onKeyUp(event: any) {
     if (event.keyCode == 13) {

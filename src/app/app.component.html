@@ -1,5 +1,5 @@
 <clr-main-container>
-  <header class="header header-3">
+  <header class="header header-6">
     <div class="branding">
       <a>
         <cds-icon shape="chat-bubble"></cds-icon>
@@ -7,11 +7,11 @@
       </a>
     </div>
     <div class="header-nav">
-      <a class="nav-link"><span class="nav-text">Forums</span></a>
+      <a class="nav-link" routerLink="/forums"><span class="nav-text">Forums</span></a>
       <a class="nav-link"><span class="nav-text">Blogs</span></a>
     </div>
     <div class="header-actions">
-      <a class="nav-link nav-icon">
+      <a class="nav-link nav-icon" [routerLink]="[{outlets: {chat: ['users']}}]">
         <cds-icon shape="talk-bubbles"></cds-icon>
       </a>
       <a class="nav-link nav-icon">
@@ -21,7 +21,8 @@
   </header>
   <div class="content-container">
     <div class="content-area">
-      <h1>Put content here</h1>
+      <router-outlet></router-outlet>
+      <router-outlet name="chat"></router-outlet>
     </div>
   </div>
 </clr-main-container>

@@ -1,34 +1,40 @@
 import { Injectable } from '@angular/core';
-import { Data, Users } from './data';
+import {Data, Forum, Users} from './data';
 
 @Injectable()
 export class ForumsService {
-  private _users: any;
-  private _data: any;
+  private _users = Users;
+  private _data = Data;
 
-  constructor() {
+/*  constructor() {
     this._data = Data;
     this._data = Users;
-  }
+  }*/
 
   get forums() {
     return this._data;
   }
 
   forum(forumAlias: string) {
-    return this._data.find((row: any) => {
+    return this._data.find(row => {
       return row.alias === forumAlias;
     });
+    /*(row => {
+      return row.alias === forumAlias;
+    });*/
   }
 
   threads(forumAlias: string) {
-    return this._data.find((row: any) => {
+    // @ts-ignore
+    return this._data.find(row => {
       return row.alias === forumAlias;
     }).threads;
   }
 
   thread(forumAlias: string, threadAlias: string) {
-    return this.forum(forumAlias).threads.find((row: any) => {
+    // @ts-ignore
+    return this.forum(forumAlias).threads.find(row => {
+      console.error(row);
       return row.alias === threadAlias;
     });
   }
