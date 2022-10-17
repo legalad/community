@@ -14,7 +14,7 @@
       <a class="nav-link nav-icon" [routerLink]="[{outlets: {chat: ['users']}}]">
         <cds-icon shape="talk-bubbles"></cds-icon>
       </a>
-      <a class="nav-link nav-icon">
+      <a class="nav-link nav-icon" (click)="logout()" *ngIf="!userService.isGuest()">
         <cds-icon shape="logout"></cds-icon>
       </a>
     </div>

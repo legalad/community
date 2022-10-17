@@ -18,7 +18,7 @@ import { ClarityIcons, logoutIcon, talkBubblesIcon, chatBubbleIcon } from '@cds/
 export class AppComponent {
   loggedIn: boolean = false;
 
-  constructor(private userService: UserService) {ClarityIcons.addIcons(logoutIcon, talkBubblesIcon, chatBubbleIcon );}
+  constructor(public userService: UserService) {ClarityIcons.addIcons(logoutIcon, talkBubblesIcon, chatBubbleIcon );}
 
   logout() {
     this.userService.logout();
